@@ -80,15 +80,19 @@ const questionTeam = () =>
                 questionIntern();
             }
             else {
-                if (err) {
-                    console.error(err);
-                } else {
-                    const generateHTML = render(team);
-                    writeFileAsync(outputPath, generateHTML);
-                    console.log("Successful");
-                }     
+                generateHTML();
             }
         });
+
+//generate HTML file
+const generateHTML = () => {
+    const renderHTML = render(team);
+    writeFileAsync(outputPath, renderHTML)
+        .then(() => {
+            console.log("Successful");
+        })
+        .catch((err) => console.error(err));
+};
 
 // array of questions for user
 const questionEngineer = () => {
