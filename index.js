@@ -22,8 +22,8 @@ const render = require("./src/page-template.js");
 const team = [];
 
 // array of questions for user
-const questionManager = () =>
-    inquirer
+const questionManager = () => {
+     return inquirer
         .prompt([
             {
                 type: 'input',
@@ -45,10 +45,7 @@ const questionManager = () =>
                 message: 'What is the manager\'s office number?',
                 name: 'officeNumber',
             },
-        ]);
-
-//constructing class and store
-questionManager()
+        ])
         .then((answers) => {
             const manager = new Manager(
                 answers.name,
@@ -61,6 +58,7 @@ questionManager()
             //menu
             questionTeam();
         })
+    };
 
 // array of questions for user
 const questionTeam = () =>
@@ -93,7 +91,7 @@ const questionTeam = () =>
         });
 
 // array of questions for user
-const questionEngineer = () =>
+const questionEngineer = () => {
     inquirer
         .prompt([
             {
@@ -116,10 +114,7 @@ const questionEngineer = () =>
                 message: 'What is the engineer\'s github username?',
                 name: 'github',
             },
-        ]);
-
-//constructing class and store
-questionEngineer()
+        ])
         .then((answers) => {
             const engineer = new Engineer(
                 answers.name,
@@ -132,9 +127,10 @@ questionEngineer()
             //menu
             questionTeam();
         })
+};
 
 // array of questions for user
-const questionIntern = () =>
+const questionIntern = () => {
     inquirer
         .prompt([
             {
@@ -157,10 +153,7 @@ const questionIntern = () =>
                 message: 'What is the intern\'s school?',
                 name: 'school',
             },
-        ]);
-
-//constructing class and store
-questionIntern()
+        ])
         .then((answers) => {
             const intern = new Intern(
                 answers.name,
@@ -173,6 +166,7 @@ questionIntern()
             //menu
             questionTeam();
         })
+};
 
 // initialisation 
 questionManager();
